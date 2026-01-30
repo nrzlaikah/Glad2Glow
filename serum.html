@@ -4,6 +4,43 @@
 <meta charset="UTF-8">
 <title>Serum | Glad2Glow</title>
 <style>
+    .dropdown-btn {
+    display: block;
+    width: 100%;
+    text-align: left;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 600;
+    font-size: 16px; 
+    color: #444;
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    background: #f8f9fa;
+    transition: 0.3s;
+}
+
+.dropdown-btn:hover {
+    background: #e3429a;
+    color: white;
+    }
+
+.dropdown-container {
+    display: none;
+    padding-left: 15px;
+    margin-bottom: 10px;
+}
+
+.dropdown-container a {
+    font-size: 15px !important;
+    background: rgba(0, 0, 0, 0.03) !important; 
+    margin-bottom: 5px !important;
+}
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -12,8 +49,8 @@ body {
 
 .menu-btn {
     border: none;
-    background: rgba(200, 200, 200, 0.6);
-    color: black;
+    background:  #f03f86;
+    color: rgb(255, 255, 255);
     font-size: 14px;
     padding: 6px 12px;
     border-radius: 20px;
@@ -26,7 +63,6 @@ body {
     width: auto;
 }
 
-/* ===== SIDE MENU ===== */
 .side-menu {
     position: fixed;
     top: 0;
@@ -287,6 +323,30 @@ button:hover {
 </head>
 
 <body>
+    <div id="sideMenu" class="side-menu">
+  <div class="side-top" style="display:flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+    <b>G2G Explorer</b>
+    <button class="close-btn" onclick="closeMenu()" style="background:none; border:none; font-size: 24px; cursor:pointer; color:#e3429a;">✕</button>
+  </div>
+  
+  <a href="index.html">Home</a>
+  <a href="about.html">About Us</a>
+  <a href="makeup.html">Makeup</a>
+
+  <button class="dropdown-btn" onclick="toggleDropdown()">
+    Skincare <span id="arrow" style="float:right;">▾</span>
+  </button>
+  
+  <div id="skincareDropdown" class="dropdown-container">
+    <a href="cleanser.html">Cleanser</a>
+    <a href="moisturizer.html">Moisturizer</a>
+    <a href="claymask.html">Claymask</a>
+    <a href="serum.html">Serum</a>
+  </div>
+
+  <a href="branch.html">Shops</a>
+</div>
+
 
 <div id="menuOverlay" onclick="closeMenu()"></div>
 
@@ -394,6 +454,19 @@ button:hover {
 <h4 style="text-align:center;">© 2026 Glad2Glow Designed for Radiance.</h4>
 
 <script>
+function toggleDropdown() {
+  var dropdown = document.getElementById("skincareDropdown");
+  var arrow = document.getElementById("arrow");
+  
+  if (dropdown.style.display === "block") {
+    dropdown.style.display = "none";
+    arrow.innerHTML = "▾";
+  } else {
+    dropdown.style.display = "block";
+    arrow.innerHTML = "▴";
+  }
+}
+
 let cart = [];
 
 if(localStorage.getItem("cart")) {

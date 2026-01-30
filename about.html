@@ -6,6 +6,48 @@
     <link href="style.css" rel="stylesheet">
     
     <style>
+            /* Style for the Skincare button to match your links perfectly */
+        .dropdown-btn {
+            display: block;
+            width: 100%;
+            text-align: left;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            outline: none;
+            
+            /* Exact matches from your .side-menu a */
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 600;
+            font-size: 16px; /* Matches default link size */
+            color: #444;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 10px;
+            background: #f8f9fa;
+            transition: 0.3s;
+        }
+
+        /* Hover effect to match your existing links */
+        .dropdown-btn:hover {
+            background: #e3429a;
+            color: white;
+        }
+
+        /* Sub-menu styling */
+        .dropdown-container {
+            display: none;
+            padding-left: 15px; /* Indent sub-items */
+            margin-bottom: 10px;
+        }
+
+        .dropdown-container a {
+            /* Slightly smaller but same font style */
+            font-size: 15px !important;
+            background: rgba(0, 0, 0, 0.03) !important; /* Subtle distinction */
+            margin-bottom: 5px !important;
+        }
+
         body {
             margin: 0;
             padding: 0;
@@ -149,6 +191,19 @@
             document.getElementById("sideMenu").classList.remove("open");
             document.getElementById("overlay").classList.remove("show");
         }
+        function toggleDropdown() {
+            var dropdown = document.getElementById("skincareDropdown");
+            var arrow = document.getElementById("arrow");
+  
+        if (dropdown.style.display === "block") {
+            dropdown.style.display = "none";
+            arrow.innerHTML = "▾";
+        } else {
+            dropdown.style.display = "block";
+            arrow.innerHTML = "▴";
+            }
+        }
+
     </script>
 </head>
 <body>
@@ -158,24 +213,31 @@
   <button class="menu-btn" onclick="openMenu()">☰ Menu</button>
 </div>
 
-        <div id="sideMenu" class="side-menu">
-        <div class="side-top" style="display:flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
-            <b>G2G Explorer</b>
-            <button class="close-btn" onclick="closeMenu()" style="background:none; border:none; font-size: 24px; cursor:pointer;">✕</button>
-        </div>
-        <!--nanti tukar korang punya part kat sini-->
-        <a href="index.html">Home</a>
-        <a href="about.html">About Us</a>
-        <a href="branch.html">Shops</a>
-        <a href="makeup.html">Makeup</a>
-        <a href="moisturizer.html">Moisturizer</a>
-        <a href="serum.html">Serum</a>
-        <a href="claymask.html">Claymask</a>
+    <div id="sideMenu" class="side-menu">
+    <div class="side-top" style="display:flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+        <b>G2G Explorer</b>
+        <button class="close-btn" onclick="closeMenu()" style="background:none; border:none; font-size: 24px; cursor:pointer; color:#e3429a;">✕</button>
+    </div>
+    
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="makeup.html">Makeup</a>
+
+    <button class="dropdown-btn" onclick="toggleDropdown()">
+        Skincare <span id="arrow" style="float:right;">▾</span>
+    </button>
+    
+    <div id="skincareDropdown" class="dropdown-container">
         <a href="cleanser.html">Cleanser</a>
-        </div>
+        <a href="moisturizer.html">Moisturizer</a>
+        <a href="claymask.html">Claymask</a>
+        <a href="serum.html">Serum</a>
+    </div>
 
+    <a href="branch.html">Shops</a>
+    </div>
 
-    <div class="main-wrapper">
+        <div class="main-wrapper">
         <div class="about-card">
             <h1>ABOUT US</h1>
             <div class="line"></div>
