@@ -1,0 +1,176 @@
+<html>
+<head>
+    <title> Homepage G2G </title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+</head>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Quicksand', sans-serif;
+    background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('logo/g2g background.jpg') no-repeat center fixed;
+    background-size: cover;
+    color: #fff;
+    line-height: 1.6;
+}
+
+/* Updated Typography */
+.special-font {
+    font-family: 'Baloo 2', cursive;
+    color: #ffffff;
+    font-size: 2.5rem;
+    letter-spacing: 1px;
+}
+</style>
+
+<script>
+  function openMenu(){
+    document.getElementById("sideMenu").classList.add("open");
+    document.getElementById("overlay").classList.add("show");
+  }
+
+  function closeMenu(){
+    document.getElementById("sideMenu").classList.remove("open");
+    document.getElementById("overlay").classList.remove("show");
+  }
+  
+  const user = JSON.parse(localStorage.getItem("loggedInUser"));
+
+if(!user){
+  // For login
+  // window.location.href = "login.html";
+}
+
+function scrollLeftG2G() {
+    document.getElementById("gallery").scrollBy({
+        left: -280, 
+        behavior: 'smooth'
+    });
+}
+
+function scrollRightG2G() {
+    document.getElementById("gallery").scrollBy({
+        left: 280, 
+        behavior: 'smooth'
+    });
+}
+</script>
+
+<body link="white" vlink="white" alink="pink">
+
+<!--Header Section-->    
+<div class="topbar">
+  <button class="menu-btn" onclick="openMenu()">☰ Menu</button>
+</div>
+
+<div id="sideMenu" class="side-menu">
+  <div class="side-top" style="display:flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+    <b>G2G Explorer</b>
+    <button class="close-btn" onclick="closeMenu()" style="background:none; border:none; font-size: 24px; cursor:pointer;">✕</button>
+  </div>
+  <!--nanti tukar korang punya part kat sini-->
+  <a href="index.html">Home</a>
+  <a href="about.html">About Us</a>
+  <a href="branch.html">Shops</a>
+  <a href="makeup.html">Makeup</a>
+  <a href="moisturizer.html">Moisturizer</a>
+  <a href="serum.html">Serum</a>
+  <a href="claymask.html">Claymask</a>
+  <a href="cleanser.html">Cleanser</a>
+</div>
+
+<div id="overlay" class="overlay" onclick="closeMenu()"></div>
+
+<div align="center" style="margin-top: 40px;">
+    <img src="logo/G2G logo.avif" width="220" style="border: 4px solid white; border-radius:50%; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+</div>
+
+<div align="center">
+    <h2 class="special-font">Real Science. Real Glow.</h2>
+    <p style="font-size: 1.2rem; opacity: 0.9;">Discover the ultimate skincare routine tailored for you.</p>
+</div>
+
+<hr class="soft-line">
+
+<!--Bestseller-->
+<div align="center">
+    <h2 class="bestseller-title">BESTSELLER</h2>
+</div>
+
+<div class="gallery-container">
+    <button class="nav-btn left" onclick="scrollLeftG2G()">&#10094;</button>
+
+    <div class="gallery" id="gallery">
+        <div class="item">
+            <img src="image/lip serum.jpg">
+            <p>Brightening Lip Serum</p>
+        </div>
+        <div class="item">
+            <img src="image/skintint.avif">
+            <p>Flawless Blurring Skin Tint</p>
+        </div>
+        <div class="item">
+            <img src="image/g2g cushion.jpg">
+            <p>Semi Matte Cushion Foundation</p>
+        </div>
+        <div class="item">
+            <img src="image/peeling solution.webp">
+            <p>Intensive Peeling Solution</p>
+        </div>
+        <div class="item">
+            <img src="image/micellar.jpg">
+            <p>Cherry Blossom Micellar</p>
+        </div>
+    </div>
+
+    <button class="nav-btn right" onclick="scrollRightG2G()">&#10095;</button>
+</div>
+
+<br>
+<!--Banner-->
+<img src="logo/G2G_banner.avif" width="100%" style="margin-top: 50px; filter: brightness(0.9);">
+
+
+<!--Footer Section-->
+<div class="footer-wrapper">
+  <div class="glass footer">
+    <div style="color:white; margin-left:15px">
+      <b style="font-size: 1.2rem;">Contact Us</b>
+      <p>📞 <a href="tel:+6281318856764" style="text-decoration: none;">+62 813-1885-6764</a></p>
+      <p>✉️ <a href="mailto:cs@glad2glow.com" style="text-decoration: none;">cs@glad2glow.com</a></p>
+    </div>
+
+
+<!--Social Media-->
+<div style="color:white; text-align: center;">
+  <b>Follow Our Journey</b><br><br>
+
+  <a href="https://www.instagram.com/glad2glow?igsh=b254d3oxeHBjem4y" target="_blank"  style="text-decoration:none;">
+    <img src="logo/ig g2g.jpg" width="35"
+         style="border-radius:10px; margin: 0 5px; cursor:pointer;">
+  </a>
+
+  <a href="https://www.tiktok.com/@glad2glow.my" target="_blank"  style="text-decoration:none;">
+    <img src="logo/tiktok g2g.jpg" width="35"
+         style="border-radius:10px; margin: 0 5px; cursor:pointer;">
+  </a>
+
+  <a href="https://www.facebook.com/share/g/1JWQTNtUkf/?mibextid=wwXIfr" target="_blank"  style="text-decoration:none;">
+    <img src="logo/fb g2g.jpg" width="35"
+         style="border-radius:10px; margin: 0 5px; cursor:pointer;">
+  </a>
+</div>
+
+<!--Logo-->
+    <img src="logo/G2G_round_logo.png" width="100" style="margin-right:15px; border-radius:50%; border:2px solid white;">
+  </div>
+
+  <div class="copyright-container">
+    © 2026 Glad2Glow. Designed for Radiance.
+  </div>
+</div>
+
+</body>
+</html>

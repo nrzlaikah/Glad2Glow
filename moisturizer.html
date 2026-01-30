@@ -1,0 +1,475 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Moisturizer | Glad2Glow</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-image:url(image/Pink.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+
+.menu-btn {
+    border: none;
+    background:  #f03f86;
+    color: rgb(255, 255, 255);
+    font-size: 14px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    width: auto;
+}
+
+
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 280px;
+    height: 100%;
+    z-index: 2000;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    transform: translateX(-100%);
+    transition: transform 0.4s ease;
+    box-sizing: border-box;
+}
+
+.side-menu.open {
+    transform: translateX(0);
+}
+
+.side-menu b {
+    color: #e3429a;
+    font-size: 24px;
+}
+
+.side-menu a {
+    display: block;
+    text-decoration: none;
+    color: #444;
+    padding: 12px 15px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    background: #f8f9fa;
+    transition: 0.3s;
+    font-weight: 600;
+}
+
+.side-menu a:hover {
+    background: #e3429a;
+    color: white;
+}
+
+#menuOverlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 1500;
+}
+
+#menuOverlay.show {
+    display: block;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background: white;
+}
+
+.cart {
+    position: relative;
+    font-size: 26px;
+    cursor: pointer;
+}
+
+.cart span {
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    background: red;
+    color: white;
+    font-size: 12px;
+    padding: 3px 7px;
+    border-radius: 50%;
+}
+
+.container {
+    width: 95%;
+    margin: auto;
+    padding: 40px 0;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+}
+
+.product {
+    position: relative;
+    text-align: center;
+    border: 1px solid #ffffff;
+    padding: 25px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: #bfbfbf;
+    color: white;
+    font-size: 14px;
+    padding: 5px 10px;
+    border-radius: 6px;
+}
+
+.product img {
+    width: 220px;
+    height: 220px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto 15px;
+}
+
+.price {
+    margin: 15px 0;
+    font-size: 16px;
+}
+
+.old {
+    text-decoration: line-through;
+    color: #aaa;
+    margin-left: 8px;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid black;
+    background: white;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s, color 0.3s;
+}
+
+button:hover {
+    background: black;
+    color: white;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(4px);
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.modal {
+    background: #fff;
+    width: 650px;
+    border-radius: 15px;
+    display: flex;
+    padding: 20px;
+    position: relative;
+    gap: 20px;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.modal img {
+    width: 260px;
+}
+
+.modal-info h2 {
+    margin-top: 0;
+}
+
+.modal-price {
+    color: #e60073;
+    font-size: 22px;
+    margin: 15px 0;
+}
+
+.modal-info button {
+    background: black;
+    color: white;
+    border-radius: 25px;
+}
+
+#modalQuantity {
+    width: 60px;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+#cartOverlay .modal {
+    flex-direction: column;
+    width: 500px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+}
+
+.cart-item button {
+    width: auto;
+    padding: 5px 10px;
+}
+
+#checkoutOverlay .modal {
+    flex-direction: column;
+    width: 450px;
+}
+
+#checkoutOverlay label {
+    display: block;
+    margin-top: 10px;
+}
+
+#checkoutOverlay input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+</style>
+</head>
+
+<body>
+
+<div id="menuOverlay" onclick="closeMenu()"></div>
+
+<div id="sideMenu" class="side-menu">
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+        <b>G2G Explorer</b>
+        <span onclick="closeMenu()" style="font-size:26px; cursor:pointer;">✕</span>
+    </div>
+    <br><br>
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="branch.html">Shops</a>
+        <a href="makeup.html">Makeup</a>
+        <a href="moisturizer.html">Moisturizer</a>
+        <a href="serum.html">Serum</a>
+        <a href="claymask.html">Claymask</a>
+        <a href="cleanser.html">Cleanser</a>
+</div>
+
+<div class="header">
+    <button class="menu-btn" onclick="openMenu()">☰ Menu</button>
+    <div class="cart" onclick="openCart()">🛒 <span id="cartCount">0</span></div>
+</div>
+
+<div class="container">
+<div class="products">
+    <div class="product">
+        <div class="badge">20%</div>
+        <img src="image/g2gbrightening.jpg">
+        <h3>Brightening</h3>
+        <p>Boost Radiance</p>
+        <div class="price">RM25.00 <span class="old">RM31.25</span></div>
+        <button onclick="openModal('Brightening','Boost Radiance','RM25.00','imagesg2g/g2gbrightening.jpg')">Add to Bag</button>
+    </div>
+
+    <div class="product">
+        <div class="badge">20%</div>
+        <img src="image/g2gblueberry.jpg">
+        <h3>Ceramide Repair</h3>
+        <p>Repair Skin Barrier</p>
+        <div class="price">RM25.00 <span class="old">RM31.25</span></div>
+        <button onclick="openModal('Ceramide Repair','Repair Skin Barrier','RM25.00','imagesg2g/g2gblueberry.jpg')">Add to Bag</button>
+    </div>
+
+    <div class="product">
+        <div class="badge">20%</div>
+        <img src="image/centella.moist.jpg">
+        <h3>Centella</h3>
+        <p>Soothing Gel Moisturizer</p>
+        <div class="price">RM25.00 <span class="old">RM31.25</span></div>
+        <button onclick="openModal('Centella','Soothing Gel Moisturizer','RM25.00','imagesg2g/centella.moist.jpg')">Add to Bag</button>
+    </div>
+
+    <div class="product">
+        <div class="badge">20%</div>
+        <img src="image/g2gretinol.jpg">
+        <h3>Retinol Renew</h3>
+        <p>Smooth Acne Scar</p>
+        <div class="price">RM25.00 <span class="old">RM31.25</span></div>
+        <button onclick="openModal('Retinol Renew','Smooth Acne Scar','RM25.00','imagesg2g/g2gretinol.jpg')">Add to Bag</button>
+    </div>
+</div>
+</div>
+
+<!-- MODALS -->
+<div class="overlay" id="overlay">
+    <div class="modal">
+        <span class="close" onclick="closeModal()">✕</span>
+        <img id="modalImg">
+        <div class="modal-info">
+            <h2 id="modalTitle"></h2>
+            <p id="modalDesc"></p>
+            <div class="modal-price" id="modalPrice"></div>
+            <label>Quantity:</label>
+            <input type="number" id="modalQuantity" value="1" min="1">
+            <button onclick="addToCart()">Add to Cart</button>
+        </div>
+    </div>
+</div>
+
+<div class="overlay" id="cartOverlay">
+    <div class="modal">
+        <span class="close" onclick="closeCart()">✕</span>
+        <h2>Your Cart</h2>
+        <div id="cartItems"></div>
+        <h3>Total: <span id="cartTotal">RM0.00</span></h3>
+        <button onclick="openCheckout()" style="background:black;color:white;border-radius:25px;">Checkout</button>
+    </div>
+</div>
+
+<div class="overlay" id="checkoutOverlay">
+    <div class="modal">
+        <span class="close" onclick="closeCheckout()">✕</span>
+        <h2>Checkout Form</h2>
+        <label>Name:</label>
+        <input type="text" id="name">
+        <label>Address:</label>
+        <input type="text" id="address">
+        <label>Phone Number:</label>
+        <input type="text" id="phone">
+        <button onclick="submitCheckout()" style="margin-top:15px;background:black;color:white;border-radius:25px;">Submit</button>
+    </div>
+</div>
+
+<h4 style="text-align:center;">© 2026 Glad2Glow Designed for Radiance.</h4>
+
+<script>
+let cart = [];
+
+// Load cart from localStorage
+if(localStorage.getItem("cart")) {
+    cart = JSON.parse(localStorage.getItem("cart"));
+    updateCartCount();
+}
+
+// Save cart
+function saveCart() {
+    localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+// MENU
+function openMenu() {
+    document.getElementById("sideMenu").classList.add("open");
+    document.getElementById("menuOverlay").classList.add("show");
+}
+function closeMenu() {
+    document.getElementById("sideMenu").classList.remove("open");
+    document.getElementById("menuOverlay").classList.remove("show");
+}
+
+function openModal(title, desc, price, img) {
+    document.getElementById("modalTitle").innerText = title;
+    document.getElementById("modalDesc").innerText = desc;
+    document.getElementById("modalPrice").innerText = price;
+    document.getElementById("modalImg").src = img;
+    document.getElementById("modalQuantity").value = 1;
+    document.getElementById("overlay").style.display = "flex";
+}
+function closeModal() { document.getElementById("overlay").style.display = "none"; }
+
+// CART
+function addToCart() {
+    const title = document.getElementById("modalTitle").innerText;
+    const price = parseFloat(document.getElementById("modalPrice").innerText.replace("RM",""));
+    const quantity = parseInt(document.getElementById("modalQuantity").value);
+    const item = cart.find(i => i.title === title);
+    if(item){ item.quantity += quantity; }
+    else { cart.push({title, price, quantity}); }
+    updateCartCount(); saveCart(); closeModal();
+}
+
+function updateCartCount() {
+    document.getElementById("cartCount").innerText = cart.reduce((total,i)=>total+i.quantity,0);
+}
+
+function openCart() {
+    let html=""; let total=0;
+    cart.forEach((item,i)=>{
+        total += item.price*item.quantity;
+        html += `<div class="cart-item">
+            <span>${item.title}</span>
+            <span>RM${item.price.toFixed(2)}</span>
+            <span>
+                <button onclick="decrease(${i})">-</button>
+                ${item.quantity}
+                <button onclick="increase(${i})">+</button>
+            </span>
+            <button onclick="removeItem(${i})">Remove</button>
+        </div>`;
+    });
+    document.getElementById("cartItems").innerHTML = html || "<p>Cart is empty</p>";
+    document.getElementById("cartTotal").innerText = "RM"+total.toFixed(2);
+    document.getElementById("cartOverlay").style.display="flex";
+}
+
+function closeCart() { document.getElementById("cartOverlay").style.display="none"; }
+function increase(i){ cart[i].quantity++; updateCartCount(); saveCart(); openCart(); }
+function decrease(i){ if(cart[i].quantity>1){cart[i].quantity--;} else{cart.splice(i,1);} updateCartCount(); saveCart(); openCart(); }
+function removeItem(i){ cart.splice(i,1); updateCartCount(); saveCart(); openCart(); }
+
+// CHECKOUT
+function openCheckout(){ if(cart.length===0){alert("Cart is empty!"); return;} closeCart(); document.getElementById("checkoutOverlay").style.display="flex"; }
+function closeCheckout(){ document.getElementById("checkoutOverlay").style.display="none"; }
+function submitCheckout(){
+    const name=document.getElementById("name").value.trim();
+    const address=document.getElementById("address").value.trim();
+    const phone=document.getElementById("phone").value.trim();
+    if(!name || !address || !phone){ alert("Please fill all fields!"); return; }
+    alert(`Thank you ${name}! Your order has been received.\nTotal: RM${cart.reduce((a,i)=>a+i.price*i.quantity,0).toFixed(2)}`);
+    cart=[]; updateCartCount(); saveCart(); closeCheckout();
+    document.getElementById("name").value="";
+    document.getElementById("address").value="";
+    document.getElementById("phone").value="";
+}
+</script>
+</body>
+</html>
+

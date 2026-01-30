@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en"> 
+    <head>
+        <meta charset="UTF-8">
+        <title>Shops | Glad2Glow</title>
+        <link rel="stylesheet" href="style(branch).css">
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+        <link href="style.css" rel="stylesheet">
+        
+    </head>
+    <style>
+        .round-logo {
+            position: fixed;
+            top: 90px; 
+            left: -250px; 
+            width: 250px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9000;
+            pointer-events: none;
+        }
+
+        .round-logo img {
+        width: 70%;
+        height: auto;
+        }
+        .notice-overlay {
+            z-index: 10000;
+        }
+
+        .notice-box {
+            position: relative;
+        }
+
+        .notice-close {
+        pointer-events: auto; 
+        }
+
+    </style>
+    <script>
+    function openMenu(){
+        document.getElementById("sideMenu").classList.add("open");
+        document.getElementById("overlay").classList.add("show");
+    }
+
+    function closeMenu(){
+        document.getElementById("sideMenu").classList.remove("open");
+        document.getElementById("overlay").classList.remove("show");
+    }
+  
+    </script>
+    <body>
+        <body link="white" vlink="white" alink="pink"></body>
+    <!--Header Section-->    
+    <div class="topbar">
+    <button class="menu-btn" onclick="openMenu()">☰ Menu</button>
+    </div>
+
+        <div id="sideMenu" class="side-menu">
+        <div class="side-top" style="display:flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+            <b>G2G Explorer</b>
+            <button class="close-btn" onclick="closeMenu()" style="background:none; border:none; font-size: 24px; cursor:pointer;">✕</button>
+        </div>
+        <!--nanti tukar korang punya part kat sini-->
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="branch.html">Shops</a>
+        <a href="makeup.html">Makeup</a>
+        <a href="moisturizer.html">Moisturizer</a>
+        <a href="serum.html">Serum</a>
+        <a href="claymask.html">Claymask</a>
+        <a href="cleanser.html">Cleanser</a>
+        </div>
+        <div id="overlay" class="overlay" onclick="closeMenu()"></div>
+        
+        <div id="storeNotice" class="notice-overlay">
+            <div class="notice-box">
+                <button class="notice-close" onclick="closeNotice()">✕</button>
+                <h2>Notice</h2>
+                <p>
+                    Glad2Glow does not operate standalone physical stores.
+                    Our products are available through authorised retail partners
+                    and official online platforms to ensure accessibility and
+                    authenticity for our customers.
+                </p>
+            </div>
+        </div>
+
+        <section id="shops" class="shops-section">
+            <h1 class="shops-title">Authorised Retail Partners</h1>
+            <i class="shops-desc">
+                Glad2Glow products are available at selected authorised retail partners nationwide.
+            </i>
+
+           <hr class="soft-line">
+
+            <div class="info-box flip-container">
+                <div class="flip-inner">
+
+        <div class="flip-front">
+            <div class="info-content">
+                <div class="info-text">
+                    <h2>Nationwide Availability</h2>
+                        <p>
+                            Glad2Glow products are widely available across Malaysia through a network of authorised retail partners and pharmacies.
+                        </p>
+
+                        <ul type="circle" style="text-align:center">
+                            <li>Watsons</li>
+                            <li>Guardian</li>
+                            <li>Mydin</li>
+                            <li>PMG Pharmacy</li>
+                        </ul><br>
+
+                        <small>
+                            Store availability may vary by location. Please check with
+                            individual retail outlets for product availability.
+                        </small>
+                    </div>
+
+                    <div class="info-media">
+                        <img src="image/MalaysiaMap.jpg" alt="Store Locations">
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-back">
+                <h2>Other Ways to Shop</h2>
+                    <p>
+                        Glad2Glow products are also available through selected online platforms and authorised e-commerce partners.
+                    </p>
+
+                    <ul type="circle" style="text-align:center">
+                            <li>TikTok Shop</li>
+                            <li>Lazada</li>
+                            <li>Shopee</li>
+                            <li>eBay</li>
+                            <li>Lotus's Shop Online</li>
+                            <li>DoctorOnCall</li>
+                    </ul><br>
+
+                    <small>
+                        Availability may differ between physical and online stores.
+                    </small>
+                </div>
+            </div>
+        </div>
+    <hr class="soft-line">
+        <div class="trust-box">
+            <h3>Why Buy from Authorised Partners?</h3>
+            <ul>
+                <li>✔ Guaranteed genuine Glad2Glow products</li>
+                <li>✔ Proper storage and handling standards</li>
+                <li>✔ Verified expiry dates</li>
+                <li>✔ Reliable after-sales support</li>
+            </ul>
+        </div>
+    <div class="shop-guide">
+        <h3>Quick Shopping Guide</h3>
+            <p>
+                Prefer in-store shopping? Visit our authorised pharmacies and retail outlets nationwide.<br>Prefer online shopping? Simply click on any platform logo below for instant access.
+            </p>
+    </div>
+
+    <div class="shop-highlights">
+        <div class="highlight-item">🏬 Physical Stores Nationwide</div>
+            <div class="highlight-item">🛒 Official Online Platforms</div>
+            <div class="highlight-item">🔒 Authentic & Safe Purchase</div>
+        <div class="highlight-item">🚚 Convenient Access</div>
+    </div>
+
+        <hr class="soft-line">
+            <div class="shops-bg">
+                    <div class="slider-wrapper">
+                        <div class="slider-track">
+                            <a href="https://www.watsons.com.my/search?text=glad2glow" target="_blank" class="shop-card">
+                                <img src="logo/WatsonsLogo.png" alt="Watsons">
+                            </a>
+                                <a href="https://vt.tiktok.com/ZS53JWgdE/?page=TikTokShop" target="_blank" class="shop-card">
+                                    <img src="logo/TikTokLogo.png" alt="TikTok Shop">
+                                </a>
+                                    <a href="https://www.guardian.com.my/search.html?query=glad2glow&page=1" target="_blank" class="shop-card">
+                                        <img src="logo/GuardianLogo.png" alt="Guardian">
+                                    </a>
+                                        <a href="https://m.lazada.com.my/?exlaz=d_1:mm_150040427_145851002_2103801010::13:23392814329!6648950500!!!!m!!!!!&gad_source=1&gad_campaignid=23388450458&gbraid=0AAAAADvlgTtl3H0qoO0iK3mXzqX1z-Dz2&gclid=CjwKCAiAmp3LBhAkEiwAJM2JUMl7GDkQfnE80j1puO29aXhAXgOdJYGhzcKR3-Vd_kc3boW-t8YKrBoC6JsQAvD_BwE" target="_blank" class="shop-card">
+                                            <img src="logo/LazadaLogo.jpg" alt="Lazada">
+                                        </a>
+                                            <a href="https://mydin.my/category/all-products" target="_blank" class="shop-card">
+                                                <img src="logo/MydinLogo.jpg" alt="MYDIN">
+                                            </a>
+                                            <a href="https://my.shp.ee/tev3Ywo" target="_blank" class="shop-card">
+                                                <img src="logo/ShopeeLogo.jpg" alt="Shopee">
+                                            </a>
+                                        <a href="https://pmg2u.com/our-services/community-pharmacy/" target="_blank" class="shop-card">
+                                            <img src="logo/PMGLogo.png" alt="PMG Pharmacy">
+                                        </a>
+                                    <a href="https://www.ebay.com/b/Malaysia/bn_7116059853=" target="_blank" class="shop-card">
+                                        <img src="logo/ebayLogo.jpg" alt="ebay">
+                                    </a>
+                            <a href="https://www.doctoroncall.com.my/medicine/rdian.com.my/search.html?query=glad2glow&page=1" target="_blank" class="shop-card">
+                                <img src="logo/DOCLogo.jpg" alt="DoctorOnCall">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            <div class="shop-cta">
+                    <p>
+                        Click on any platform logo above to explore and purchase Glad2Glow products with confidence.
+                    </p>
+                    <small>
+                    Glad2Glow products are available exclusively through authorised retail partners to ensure quality and authenticity.
+                    </small>
+                </div>
+        </section>
+
+        <!-- JS -->
+        <script>
+            function closeNotice() {
+                document.getElementById("storeNotice").style.display = "none";
+                document.getElementById("shops").scrollIntoView({ behavior: "smooth" });
+            }
+        </script>
+        <iframe src="footer.html" style="width:100%; border:none;"></iframe>
+
+    </body>
+</html>
